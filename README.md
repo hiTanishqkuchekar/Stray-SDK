@@ -1,4 +1,4 @@
-# Stray o1 (Python SDK)
+# Stray v1.1 (Python SDK)
 
 A simple agent that connects to the Stellar blockchain and allows sending XLM payments using natural prompt inputs.
 
