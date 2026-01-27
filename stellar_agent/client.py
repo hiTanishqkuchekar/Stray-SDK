@@ -1,5 +1,6 @@
 """Stellar blockchain client for payment operations."""
-from stellar_sdk import Server, Keypair, TransactionBuilder, Network, Asset, Operation
+from stellar_sdk import Server, Keypair, TransactionBuilder, Asset
+from stellar_sdk.operation import Payment
 from typing import Dict, Any
 from .config import config
 
@@ -49,11 +50,11 @@ class StellarClient:
                 base_fee=100,
             )
             .append_operation(
-                Operation.payment({
-                    "destination": destination_public,
-                    "asset": Asset.native(),
-                    "amount": str(amount)
-                })
+                Payment(
+                    destination=destination_public,
+                    asset=Asset.native(),
+                    amount=str(amount)
+                )
             )
             .set_timeout(30)
             .build()
